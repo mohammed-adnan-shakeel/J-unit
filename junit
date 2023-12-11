@@ -1,0 +1,47 @@
+package com.junit.mongojunit;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.junit.mongojunit.model.Model;
+import com.junit.mongojunit.repository.Repository;
+
+
+
+@SpringBootTest
+class MongojunitApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+	
+	@Autowired 
+	Repository repo;
+	
+	@Test
+	public void testCreate() {
+	Model m=new Model();
+	m.setId(102);
+	m.setName("danish");
+	repo.save(pp);
+	}
+	
+	@Test
+	public void testReadAll() {
+	Iterable<Model> List=repo.findAll();
+	}
+	
+	@Test
+	public void testDelete() {
+	repo.deleteById(102);
+	}
+	
+	@Test
+	public void testupdate() {
+	Model m=repo.findById(101).get();
+	m.setName("Adnan");
+	repo.save(m);
+	}
+
+}
